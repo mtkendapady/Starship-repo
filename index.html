@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="Starship" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="styles.css">
 	<title>Promises</title>
 </head>
-<body>
+<body ng-controller="homeCtrl">
 
 <main class="wrapper">
 	<div class="characters">
-		<button class="btn btn-primary">Next Page</button>
+		<button ng-click="getNextPage()" class="btn btn-primary">Next Page</button>
 		<ul class="character-list">
-			<li>
+			<li ng-repeat="person in people">
 				<div class="character">
-					<h3>Luke Skywalker</h3>
-					<p>Gender: Male</p>
-					<p>Hair Color: Blond</p>
-					<p>Eye Color: Blue</p>
-					<button class="btn btn-primary">Get 2 starships.</button>
+					<h3>{{ person.name }}</h3>
+					<p>Gender: {{ person.gender }}</p>
+					<p>Hair Color: {{ person.hair_color }}</p>
+					<p>Eye Color: {{ person.eye_color }}</p>
+					<button class="btn btn-primary" ng-click="getStarships( person.starships )">Get {{ person.starships.length }} starships.</button>
 				</div>
 				<hr />
 			</li>
@@ -27,11 +27,11 @@
 
 	<div class="starships">
 		<ul class="ship-list">
-			<li>
+			<li ng-repeat="ship in starships">
 				<div class="ship">
-					<h3>Name: X-Wing</h3>
-					<h4>Manufacturer: Incom Corporation</h4>
-					<p>Cost: 149999</p>
+					<h3>Name: {{ ship.name }}</h3>
+					<h4>Manufacturer: {{ ship.manufacturer }}</h4>
+					<p>Cost: {{ ship.cost_in_credits }}</p>
 				</div>
 			</li>
 		</ul>
